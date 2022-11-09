@@ -49,6 +49,18 @@ make
 cp ./out/libui.a /path/to/your/folder
 ```
 
+**docker container network**
+```sh
+vim /etc/docker/daemon.json
+# add dns list
+{"dns": ["8.8.8.8"]}
+```
+
+**docker container goproxy**
+```sh
+export GOPROXY="https://goproxy.cn,direct"
+```
+
 
 
 **see also**
