@@ -66,10 +66,6 @@ clean_docker_image:
 	@docker system prune -a
 
 
-push:
-	@echo 'git push...'
-	@git add -A && git commit -m "update" && git push origin master
-	@echo 'done'
 
 clean:
 	@rm -rf bin
