@@ -42,7 +42,7 @@ build_darwin:
 
 build_darwin_arm:
 	@echo 'build darwin arm64...'
-	@env CGO_ENABLED=1 GOOS=darwin GOARCH=${DARWIN_ARCH} CC=${DARWIN_GCC} CXX=${DARDOW_GXX} go build -ldflags '-s -w -X main.Version=${VERSION}' -gcflags="all=-trimpath=${PWD}" -asmflags="all=-trimpath=${PWD}" -o ${BIN}-darwin-${DARWIN_ARCH}-${VERSION}${BIN_MACOS} main.go
+	@env CGO_ENABLED=1 GOOS=darwin GOARCH=${DARWIN_ARCH} CC=${DARWIN_GCC} CXX=${DARDOW_GXX} go build -ldflags '-s -w -v -X main.Version=${VERSION}' -gcflags="all=-trimpath=${PWD}" -asmflags="all=-trimpath=${PWD}" -o ${BIN}-darwin-${DARWIN_ARCH}-${VERSION}${BIN_MACOS} main.go
 	@echo 'done'
 
 launch_docker:
