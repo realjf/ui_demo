@@ -17,6 +17,10 @@ DARDOW_GXX="o64-clang++"
 
 GO_PROJECTS="/home/realjf/go/src"
 
+
+XCGO_IMAGE="realjf/xcgo-sdk11.3-catalina:go1.19"
+
+
 .PHONY: 
 
 
@@ -43,7 +47,7 @@ build_darwin_arm:
 
 launch_docker:
 	@echo 'launch docker...'
-	@docker run  -v ${GO_PROJECTS}:/go/src -v /var/run/docker.sock:/var/run/docker.sock -w /go/src -it neilotoole/xcgo:latest zsh 
+	@docker run  -v ${GO_PROJECTS}:/go/src -v /var/run/docker.sock:/var/run/docker.sock -w /go/src -it ${XCGO_IMAGE} zsh 
 
 
 setup:
@@ -51,6 +55,10 @@ setup:
 	@chmod +x ./scripts/setup.py
 	@./scripts/setup.py -f ./scripts/libraries.json -d -b
 
+push:
+	@echo 'git push...'
+	@git add -A && git commit -m "update" && git push origin master
+	@echo 'done'
 
 # Purging All Unused or Dangling Images, Containers, Volumes, and Networks
 clean_docker_image:
