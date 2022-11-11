@@ -15,6 +15,9 @@ WINDOWS_GXX="/usr/bin/x86_64-w64-mingw32-g++"
 DARWIN_GCC="o64-clang"
 DARDOW_GXX="o64-clang++"
 
+DARWIN_ARM_GCC="oa64-clang"
+DARWIN_ARM_GXX="oa64-clang++"
+
 GO_PROJECTS="/home/realjf/go/src"
 
 
@@ -42,7 +45,7 @@ build_darwin:
 
 build_darwin_arm:
 	@echo 'build darwin arm64...'
-	@env CGO_ENABLED=1 GOOS=darwin GOARCH=${DARWIN_ARCH} CC=${DARWIN_GCC} CXX=${DARDOW_GXX} go build -ldflags '-s -w -v -X main.Version=${VERSION}' -gcflags="all=-trimpath=${PWD}" -asmflags="all=-trimpath=${PWD}" -o ${BIN}-darwin-${DARWIN_ARCH}-${VERSION}${BIN_MACOS} main.go
+	@env CGO_ENABLED=1 GOOS=darwin GOARCH=${DARWIN_ARCH} CC=${DARWIN_ARM_GCC} CXX=${DARWIN_ARM_GXX} go build -ldflags '-s -w -v -X main.Version=${VERSION}' -gcflags="all=-trimpath=${PWD}" -asmflags="all=-trimpath=${PWD}" -o ${BIN}-darwin-${DARWIN_ARCH}-${VERSION}${BIN_MACOS} main.go
 	@echo 'done'
 
 launch_docker:
